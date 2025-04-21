@@ -44,12 +44,12 @@ export default function UploadForm({ onStream, setPdfFile, setIsLoading, resetSe
   const handleUpload = async () => {
     if (!file) return toast.error("Please select a PDF file!");
 
-    resetSections(); // ✅ clear previous summaries
+    resetSections(); //clear previous summaries
 
     setPdfFile(file);
     setIsLoading(true);
     setIsSummarizing(true);
-    toast.dismiss(); // Remove previous toasts if any
+    toast.dismiss();
     const uploading = toast.loading("Summarizing");
 
     try {
