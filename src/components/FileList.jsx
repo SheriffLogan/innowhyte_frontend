@@ -1,9 +1,9 @@
 // src/components/FileList.jsx
-import { useState, useEffect, useRef  } from "react";
+import { useState, useEffect  } from "react";
 import { handlePdfUpload } from "../config/ApiConfig";
 import toast from "react-hot-toast";
 
-export default function FileList() {
+export default function FileList({refresh}) {
   const [files, setFiles] = useState([]);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function FileList() {
       }
     }
     fetchFiles();
-  }, []);
+  }, [refresh]);
 
   return (
     <div

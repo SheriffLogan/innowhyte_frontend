@@ -11,6 +11,7 @@ export default function App() {
   const [pdfFile, setPdfFile] = useState(null);
   const [currentPage, setCurrentPage] = useState(null);  // null until clicked
   const [alreadyOnPage, setAlreadyOnPage] = useState(false);
+  const [refreshFiles, setRefreshFiles] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleStream = (data) => {
@@ -109,7 +110,7 @@ export default function App() {
 
           }}
         >
-          <FileList/>
+          <FileList refresh={refreshFiles}/>
         </div>
 
         {/* Uploader */}
@@ -130,6 +131,8 @@ export default function App() {
             setPdfFile={setPdfFile}
             setIsLoading={setIsLoading}
             resetSections={() => setSections([])}
+            onComplete={() => setRefreshFiles((c) => c + 1)}
+
           />
         </div>
       </div>

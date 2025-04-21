@@ -26,7 +26,7 @@ const spinnerStyles = `
 }
 `;
 
-export default function UploadForm({ onStream, setPdfFile, setIsLoading, resetSections  }) {
+export default function UploadForm({ onStream, setPdfFile, setIsLoading, resetSections, onComplete  }) {
   const [file, setFile] = useState(null);
   const [isSummarizing, setIsSummarizing] = useState(false);
 
@@ -80,6 +80,8 @@ export default function UploadForm({ onStream, setPdfFile, setIsLoading, resetSe
         buffer = parts[parts.length - 1];
       }
       toast.success("Summarization complete!", { id: uploading });
+      if (onComplete) onComplete();
+
     } catch (error) {
       console.error("Upload error:", error);
       toast.error("Something went wrong!", { id: uploading });
