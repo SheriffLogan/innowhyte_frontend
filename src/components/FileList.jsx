@@ -58,10 +58,17 @@ export default function FileList() {
           padding: "8px",
           display: "flex",
           flexDirection: "column",
-          gap: "12px"
+          gap: "12px",
+          justifyContent: files.length === 0 ? "center" : "flex-start",
+          alignItems: files.length === 0 ? "center" : "stretch",
         }}
       >
-        {files.map((file) => (
+        {files.length === 0 ? (
+          <div style={{ color: "#888", fontStyle: "italic" }}>
+            No Files Found
+          </div>
+        ) : (
+          files.map((file) => (
           <div
             key={file.id}
             style={{
@@ -80,7 +87,8 @@ export default function FileList() {
           >
             {file.name}
           </div>
-        ))}
+        ))
+      )}
       </div>
     </div>
   );
